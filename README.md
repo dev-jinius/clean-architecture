@@ -57,7 +57,7 @@
 
 ## ERD 설계
 ### 필수 
-![APPLY_ERD(BS)](https://github.com/dev-jinius/clean-architecture/assets/161837399/6443ea41-cd37-4fb9-b4c6-b67c64f95b1b)
+![APPLY_ERD(BS)](https://github.com/dev-jinius/clean-architecture/assets/161837399/007d7484-7cc4-4787-b876-7abc8fe1ae07)
 
 ### 선택 (심화)
-![APPLY_ERD(ADV)](https://github.com/dev-jinius/clean-architecture/assets/161837399/47ab8a15-a55b-4407-9626-01a69b29efd9)
+![APPLY_ERD(ADV)](https://github.com/dev-jinius/clean-architecture/assets/161837399/c03c458a-0b7f-49e2-9c56-1b11dcdfc03f)
