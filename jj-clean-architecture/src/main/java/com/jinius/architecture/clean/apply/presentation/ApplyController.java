@@ -24,7 +24,7 @@ public class ApplyController {
     /**
      * 특강 신청
      */
-    @PostMapping("/special")
+    @PostMapping
     public ResponseEntity<ApplyResponse> apply(@RequestBody ApplyRequest request) {
         ApplyResponse applyResponse = null;
 
@@ -34,8 +34,8 @@ public class ApplyController {
     /**
      * 특강 신청 완료 조회
      */
-    @GetMapping("/special/success/{userId}")
-    public ResponseEntity<ApplyResponse> success(@RequestParam(value = "userId") ApplyRequest request) {
+    @GetMapping("/{userId}")
+    public ResponseEntity<ApplyResponse> applyResult(@PathVariable(value = "userId") ApplyRequest request) {
         ApplyResponse applyResponse = null;
 
         return ResponseEntity.ok().body(applyResponse);

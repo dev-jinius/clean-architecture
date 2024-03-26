@@ -1,5 +1,6 @@
 package com.jinius.architecture.clean.apply.domain.entity;
 
+import com.jinius.architecture.clean.apply.application.dto.ApplyResponse;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -26,6 +27,11 @@ public class Apply {
     private UUID applyId;
 
     /**
+     * 강의 정보 ID
+     */
+    private UUID lectureId;
+
+    /**
      * 신청 유저 ID 
      * UNIQUE
      */
@@ -36,18 +42,20 @@ public class Apply {
      * 버전
      */
     @Version
-    @Column(name = "version", nullable = false)
     private Long version;
 
     /**
      * 특강 일시
      */
     @Column(name = "lecture_date")
-    private final LocalDateTime lectureDate = LocalDateTime.of(2024, 4, 20, 13, 0, 0);
+    private LocalDateTime lectureDate = LocalDateTime.of(2024, 4, 20, 13, 0, 0);
 
-    @Builder
-    public Apply(Long userId, Long version) {
+
+
+
+    public Apply(Long userId, UUID lectureId) {
         this.userId = userId;
-        this.version = version;
+        this.lectureId = lectureId;
     }
+
 }
