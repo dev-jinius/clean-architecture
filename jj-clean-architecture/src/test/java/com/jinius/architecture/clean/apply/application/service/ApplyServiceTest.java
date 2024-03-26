@@ -1,13 +1,11 @@
 package com.jinius.architecture.clean.apply.application.service;
 
-import com.jinius.architecture.clean.apply.domain.repository.ApplyRepository;
+import com.jinius.architecture.clean.apply.repository.ApplyRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 특강 신청 단위 테스트

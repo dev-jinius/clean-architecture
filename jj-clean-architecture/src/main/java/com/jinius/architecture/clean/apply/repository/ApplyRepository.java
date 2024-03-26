@@ -1,4 +1,4 @@
-package com.jinius.architecture.clean.apply.domain.repository;
+package com.jinius.architecture.clean.apply.repository;
 
 import com.jinius.architecture.clean.apply.domain.entity.Apply;
 import jakarta.transaction.Transactional;
