@@ -1,13 +1,14 @@
 package com.jinius.architecture.clean.apply.domain.entity;
 
+import com.jinius.architecture.clean.apply.exception.ApplyErrorType;
+import com.jinius.architecture.clean.apply.exception.ApplyException;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.CustomLog;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+
+import static com.jinius.architecture.clean.apply.exception.ApplyErrorType.OVERFLOW_MAX_CNT;
 
 /**
  * 강의 정보
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Entity
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "tb_lecture")
 public class Lecture {
     @Id
@@ -28,11 +30,10 @@ public class Lecture {
     @Column(name = "lecture_date_time")
     private LocalDateTime lectureDateTime;  //강의 일시
 
-    /**
-     * 총 수강 신청 인원
-     */
-    private Long totalCnt;
-    public void addCnt() {
-        totalCnt++;
+    private int applySeatCount;    //수강 신청 카운트(최대 30)
+
+    public void addCount() {
+        if (this.applySeatCount >= 30) throw new ApplyException(OVERFLOW_MAX_CNT);
+        applySeatCount++;
     }
 }

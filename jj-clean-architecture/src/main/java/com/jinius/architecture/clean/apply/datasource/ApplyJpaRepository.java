@@ -16,9 +16,7 @@ public interface ApplyJpaRepository extends JpaRepository<Apply, Long> {
 
      Apply save(Apply apply);
 
-
-
-     @Lock(LockModeType.OPTIMISTIC)
-     @Query(value = "select a from Apply a where a.applyId = :applyId")
-     Optional<Apply> findByApplyIdLock(Long applyId);
+//     @Lock(LockModeType.OPTIMISTIC)
+//     @Query(value = "select a from Apply a where a.applyId = :applyId")
+//     Apply findByApplyIdLock(Long applyId);
 }

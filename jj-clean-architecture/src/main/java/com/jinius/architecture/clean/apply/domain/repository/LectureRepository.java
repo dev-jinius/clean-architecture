@@ -1,13 +1,15 @@
 package com.jinius.architecture.clean.apply.domain.repository;
 
 import com.jinius.architecture.clean.apply.application.dto.ApplyRequest;
-import com.jinius.architecture.clean.apply.domain.entity.Lecture;
+import com.jinius.architecture.clean.apply.application.dto.LectureResponse;
 
-import java.util.Optional;
+import java.util.List;
 
-public interface LectureRepository{
+public interface LectureRepository {
 
-    Optional<Lecture> findByLectureId(ApplyRequest request);
+    //강의 ID로 강의 정보 조회
+    LectureResponse checkLecture(ApplyRequest request);
 
-    Lecture save(Lecture lecture);
+    //특강 목록 조회
+    List<LectureResponse> lectureList();
 }
