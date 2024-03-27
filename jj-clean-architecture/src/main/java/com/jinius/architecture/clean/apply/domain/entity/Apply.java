@@ -1,5 +1,6 @@
 package com.jinius.architecture.clean.apply.domain.entity;
 
+import com.jinius.architecture.clean.apply.application.dto.ApplyResponse;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -15,7 +16,12 @@ import java.util.UUID;
 @Entity
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "tb_apply")
+@Table(name = "tb_apply",
+        uniqueConstraints = {
+            @UniqueConstraint(
+                name = "USER_LECTURE_UNIQUE",
+                columnNames = {"lectureId", "userId"})
+            })
 public class Apply {
     /**
      * 특강 ID
@@ -24,6 +30,13 @@ public class Apply {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "apply_id")
     private UUID applyId;
+
+    /**
+     * 강의 정보 ID
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lecture_id", unique = true, nullable = false)
+    private Lecture lecture;
 
     /**
      * 신청 유저 ID 
@@ -36,18 +49,17 @@ public class Apply {
      * 버전
      */
     @Version
-    @Column(name = "version", nullable = false)
     private Long version;
 
     /**
      * 특강 일시
      */
     @Column(name = "lecture_date")
-    private final LocalDateTime lectureDate = LocalDateTime.of(2024, 4, 20, 13, 0, 0);
+    private LocalDateTime lectureDate = LocalDateTime.of(2024, 4, 20, 13, 0, 0);
 
     @Builder
-    public Apply(Long userId, Long version) {
+    public Apply(Long userId, Lecture lecture) {
         this.userId = userId;
-        this.version = version;
+        this.lecture = lecture;
     }
 }
