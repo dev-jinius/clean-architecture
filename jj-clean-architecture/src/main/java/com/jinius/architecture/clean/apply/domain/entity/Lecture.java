@@ -30,6 +30,7 @@ public class Lecture {
     @Column(name = "lecture_date_time")
     private LocalDateTime lectureDateTime;  //강의 일시
 
+    @Column(name = "apply_seat_count")
     private int applySeatCount;    //수강 신청 카운트(최대 30)
 
     public void addCount() {
